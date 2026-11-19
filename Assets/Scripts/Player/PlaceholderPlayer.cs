@@ -9,6 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlaceholderPlayer : MonoBehaviour
 {
+    public float baseSpeed = 7f;
     public float moveSpeed = 7f;
     public float jumpSpeed = 14f;
     public LayerMask groundLayer;
@@ -29,9 +30,12 @@ public class PlaceholderPlayer : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if(Input.GetButton("Sprint"))
         {
-            moveSpeed = moveSpeed * (float)1.5;
+            moveSpeed = baseSpeed * 1.5f;
+        }
+        else {
+            moveSpeed = baseSpeed;
         }
     }
 
