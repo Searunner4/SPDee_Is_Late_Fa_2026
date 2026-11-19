@@ -29,6 +29,10 @@ public class PlaceholderPlayer : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            moveSpeed = moveSpeed * (float)1.5;
+        }
     }
 
     void FixedUpdate()
