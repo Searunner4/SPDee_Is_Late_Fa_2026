@@ -76,6 +76,7 @@ public class LevelManager : MonoBehaviour
     {
         if (levelFinished) return;
         levelFinished = true;
+        GameSession.AddLevel(Time.timeSinceLevelLoad, Deaths);
         OnLevelCompleted?.Invoke();
         StartCoroutine(LoadNextLevel());
     }

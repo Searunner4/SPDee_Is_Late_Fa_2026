@@ -47,6 +47,16 @@ Reference: https://docs.unity3d.com/2022.3/Documentation/Manual/Tilemap.html
 
 **Art:** we're using the *2D Pixel Art Platformer Biome - American Forest* pack already in `Assets/`. Its `Tilemap/` folder has ready-made Ground, BackGround, Plant, and Fence tiles, plus `TileSpikes` for thorn hazards (put spikes on their own `Hazards` tilemap with a trigger Tilemap Collider 2D and `KillZone`). Its `Demo.unity` scene is a good reference.
 
+## Scene builder (Start, Game Over, Level 0)
+`Assets/Scripts/Editor/SceneBuilder.cs` adds a **S.P.Dee → Build Start, Game Over and Level 0** menu in Unity. It:
+- builds `_Start_Scene` (title, Play/Quit) and `_GameOver_Scene` (total time and falls, Play Again/Main Menu)
+- builds `_Scene_Lvl_0` from the forest tiles: start area, a gap, a beetle, a hedgehog, a spike pit, a bee, one checkpoint and the goal, with parallax background
+- adds the `Ground` and `Enemies` layers and sets the Build Settings order
+
+It **overwrites** those three scenes, so run it once, then edit the scenes by hand afterwards.
+The player in Level 0 is a placeholder box (`PlaceholderPlayer`) until Jacob's player is ready.
+Level 0 currently goes straight to the Game Over screen; clear **Next Scene Name** on its LevelManager once Level 1 is built.
+
 ## Level plan (matches the scenes in `Assets/Scenes/`)
 The goal is a good time, so each level should have a **safe route** and a **faster, riskier route** (a stomp chain, a hard jump, a sprint gap).
 
